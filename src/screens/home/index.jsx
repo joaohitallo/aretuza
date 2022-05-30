@@ -2,26 +2,23 @@ import React from 'react';
 import { View, Text, Button, Image, StyleSheet } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
 
-import { Input } from '../../components/Input'
-import { ButtonRed } from '../../components/ButtonRed'
+
 
 import logo from '../../assets/logo.svg'
 
-export function SignIn({ navigation }) {
+import { ButtonMenu } from '../../components/ButtonMenu'
 
-  function handleLogin() {
-    navigation.navigate('Home')
-  }
+export function Home({ navigation }) {
+
+
 
   return (
     <View style={styles.container}>
       <Image style={styles.logo} source={logo} />
       <View style={styles.content}>
-
-        <Input placeholder="Email" />
-        <Input placeholder="Senha" />
-        <ButtonRed title='Entrar' onPress={handleLogin} />
-
+        <ButtonMenu />
+        <ButtonMenu />
+        <ButtonMenu />
       </View>
     </View>
   );
@@ -36,19 +33,22 @@ const styles = StyleSheet.create({
   },
   content: {
     paddingTop: '80px',
-    alignItems: 'center',
-    justifyContent: 'flex-start',
+    padding: '10px',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    // justifyContent: 'space-around',
+    alignContent: 'flex-start',
     position: 'absolute',
     bottom: 0,
     backgroundColor: '#fff',
-    height: '70%',
+    height: '80%',
     width: '100%',
     borderTopLeftRadius: '40px',
     borderTopRightRadius: '40px',
   },
   logo: {
     position: 'absolute',
-    top: 100,
+    top: 80,
     height: '59px',
     width: '133px'
   }
