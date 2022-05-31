@@ -4,7 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 
 
 
-import logo from '../../assets/logo.svg'
+import logo from '../../assets/logo.png'
+import EstoqueList from '../../assets/EstoqueList.svg'
 
 import { ButtonMenu } from '../../components/ButtonMenu'
 
@@ -16,7 +17,7 @@ export function Home({ navigation }) {
     <View style={styles.container}>
       <Image style={styles.logo} source={logo} />
       <View style={styles.content}>
-        <ButtonMenu />
+        <ButtonMenu image={EstoqueList} />
         <ButtonMenu />
         <ButtonMenu />
       </View>
@@ -32,8 +33,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   content: {
-    paddingTop: '80px',
-    padding: '10px',
+    paddingTop: 80,
+    padding: 10,
     flexDirection: 'row',
     flexWrap: 'wrap',
     // justifyContent: 'space-around',
@@ -43,13 +44,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     height: '80%',
     width: '100%',
-    borderTopLeftRadius: '40px',
-    borderTopRightRadius: '40px',
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
   },
   logo: {
     position: 'absolute',
     top: 80,
-    height: '59px',
-    width: '133px'
+    height: 59,
+    width: 133
   }
 });

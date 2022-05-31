@@ -5,7 +5,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Input } from '../../components/Input'
 import { ButtonRed } from '../../components/ButtonRed'
 
-import logo from '../../assets/logo.svg'
+import logo from '../../assets/logo.png'
 
 export function SignIn({ navigation }) {
 
@@ -35,21 +35,21 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   content: {
-    paddingTop: '80px',
+    //paddingTop: 80,
     alignItems: 'center',
-    justifyContent: 'flex-start',
+    justifyContent: 'center',
     position: 'absolute',
     bottom: 0,
     backgroundColor: '#fff',
     height: '70%',
     width: '100%',
-    borderTopLeftRadius: '40px',
-    borderTopRightRadius: '40px',
+    borderTopLeftRadius: 40,
+    borderTopRightRadius: 40,
   },
   logo: {
     position: 'absolute',
     top: 100,
-    height: '59px',
-    width: '133px'
+    height: 59,
+    width: 133
   }
 });

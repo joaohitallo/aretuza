@@ -19,15 +19,15 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: '15px',
+    margin: 15,
   },
   Button: {
 
     height: '100%',
     width: '80%',
     backgroundColor: '#CD3F35',
-    borderRadius: '100px',
-    padding: '10px',
+    borderRadius: 100,
+    padding: 10,
 
     alignItems: 'center',
     justifyContent: 'center',
@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
   Text: {
     color: '#FFFFFF',
     fontWeight: 'bold',
-    fontSize: '20px'
+    fontSize: 20
   }
 });

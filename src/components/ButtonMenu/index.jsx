@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, TouchableOpacity, StyleSheet, Text } from 'react-native';
+import { View, TouchableOpacity, StyleSheet, Text, Image } from 'react-native';
 
 
 
-export function ButtonMenu({ title, onPress, ...rest }) {
+export function ButtonMenu({ title, image, onPress, ...rest }) {
   return (
     <TouchableOpacity style={styles.Button} {...rest} onPress={onPress}>
-      <Text style={styles.Text}> {title} </Text>
+      <Image style={styles.Image} source={image} />
     </TouchableOpacity>
   );
 }
@@ -18,14 +18,13 @@ const styles = StyleSheet.create({
     width: 150,
     backgroundColor: '#0D0E11',
     borderRadius: 20,
-    padding: '10px',
+    padding: 10,
 
     alignItems: 'center',
     justifyContent: 'center',
   },
-  Text: {
-    color: '#FFFFFF',
-    fontWeight: 'bold',
-    fontSize: '20px'
+  Image: {
+    height: 100,
+    width: 100,
   }
 });

@@ -19,14 +19,14 @@ const stylesInput = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: '5px',
+    margin: 5,
   },
   input: {
     height: '90%',
     width: '80%',
     backgroundColor: '#FBEBEB',
-    borderRadius: '100px',
-    padding: '10px',
-    paddingLeft: '20px',
+    borderRadius: 100,
+    padding: 10,
+    paddingLeft: 20,
   }
 });
