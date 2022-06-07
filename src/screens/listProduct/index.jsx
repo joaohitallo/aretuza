@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, StyleSheet, Text } from 'react-native';
+import { View, StyleSheet, Text, SafeAreaView } from 'react-native';
 
 import { Input } from '../../components/Input'
 import { ButtonVoltar } from '../../components/ButtonVoltar';
+import { CardProduct } from '../../components/CardProduct'
 
 export function ListProduct({ navigation }) {
   return (
@@ -13,9 +14,9 @@ export function ListProduct({ navigation }) {
         <Input placeholder={'Pesquisar'} />
         <View style={styles.barra}> </View>
       </View>
-      <View style={styles.productList}>
-
-      </View>
+      <SafeAreaView style={styles.productList}>
+        <CardProduct style={styles.product} />
+      </SafeAreaView>
     </View>
   );
 }
@@ -39,5 +40,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#A2A2A2',
     width: '80%',
     height: 2
+  },
+  product: {
+    width: 100,
+    backgroundColor: 'red'
   }
+
 });
