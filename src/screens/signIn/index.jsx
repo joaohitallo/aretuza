@@ -12,6 +12,7 @@ export function SignIn({ navigation }) {
   function handleLogin() {
 
     navigation.navigate('Home')
+
   }
 
   return (
