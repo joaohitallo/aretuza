@@ -10,6 +10,7 @@ import logo from '../../assets/logo.png'
 export function SignIn({ navigation }) {
 
   function handleLogin() {
+
     navigation.navigate('Home')
   }
 

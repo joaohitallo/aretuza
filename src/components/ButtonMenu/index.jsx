@@ -3,15 +3,26 @@ import { View, TouchableOpacity, StyleSheet, Text, Image } from 'react-native';
 
 
 
-export function ButtonMenu({ title, image, onPress, ...rest }) {
+export function ButtonMenu({ title, image, onPress, text, ...rest }) {
   return (
-    <TouchableOpacity style={styles.Button} {...rest} onPress={onPress}>
-      <Image style={styles.Image} source={image} />
-    </TouchableOpacity>
+    <View style={styles.container}>
+      <TouchableOpacity style={styles.Button} {...rest} onPress={onPress}>
+        <Image style={styles.Image} source={image} />
+      </TouchableOpacity>
+      <Text style={styles.Text} >{text}</Text>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
+  container: {
+    flexDirection: 'column',
+    alignItems: 'center'
+  },
+  Text: {
+    color: '#CD3F35',
+    fontWeight: 'bold'
+  },
   Button: {
     margin: 20,
     height: 150,
