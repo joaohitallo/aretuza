@@ -21,7 +21,7 @@ export function SignIn({ navigation }) {
       <View style={styles.content}>
 
         <Input placeholder="Email" />
-        <Input placeholder="Senha" />
+        <Input placeholder="Senha" secureTextEntry />
         <ButtonRed title='Entrar' onPress={handleLogin} />
 
       </View>

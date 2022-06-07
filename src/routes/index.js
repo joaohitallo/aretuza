@@ -6,6 +6,7 @@ const { Screen, Navigator } = createNativeStackNavigator();
 import { SignIn } from '../screens/signIn/index'
 import { Home } from '../screens/home/index'
 import { ListProduct } from '../screens/listProduct/index'
+import { RegisterProduct } from '../screens/registerProduct';
 
 export function Routes() {
   return (
@@ -21,6 +22,10 @@ export function Routes() {
         />
         <Screen
           name="ListProduct" component={ListProduct}
+          options={{ headerShown: false }}
+        />
+        <Screen
+          name="RegisterProduct" component={RegisterProduct}
           options={{ headerShown: false }}
         />
       </Navigator>

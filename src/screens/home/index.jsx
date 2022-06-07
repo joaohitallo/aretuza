@@ -5,21 +5,20 @@ import { NavigationContainer } from '@react-navigation/native';
 
 
 import logo from '../../assets/logo.png'
-import EstoqueList from '../../assets/EstoqueList.svg'
-import CadastrarProd from '../../assets/newProduct.svg'
-import EfetuarVend from '../../assets/venda.svg'
+import EstoqueList from '../../assets/EstoqueList.png'
+import CadastrarProd from '../../assets/newProduct.png'
+import EfetuarVend from '../../assets/venda.png'
 
 import { ButtonMenu } from '../../components/ButtonMenu'
 
 export function Home({ navigation }) {
 
   function handleVisualizarEstoque() {
-    console.log('aki');
     navigation.navigate('ListProduct')
   }
 
   function handleCadastrarProduto() {
-    navigation.navigate('CadastrarProduto')
+    navigation.navigate('RegisterProduct')
   }
 
   function handleEfetuarVenda() {
@@ -31,7 +30,7 @@ export function Home({ navigation }) {
       <Image style={styles.logo} source={logo} />
       <View style={styles.content}>
         <ButtonMenu text={'Visualizar \n estoque'} image={EstoqueList} onPress={handleVisualizarEstoque} />
-        <ButtonMenu text={'Cadastrar \n produto'} image={CadastrarProd} />
+        <ButtonMenu text={'Cadastrar \n produto'} image={CadastrarProd} onPress={handleCadastrarProduto} />
         <ButtonMenu text={'Efetuar \n venda'} image={EfetuarVend} />
       </View>
     </View>

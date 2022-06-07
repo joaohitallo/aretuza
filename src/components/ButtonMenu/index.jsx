@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold'
   },
   Button: {
-    margin: 20,
+    margin: 10,
     height: 150,
     width: 150,
     backgroundColor: '#0D0E11',
@@ -35,7 +35,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   Image: {
-    height: 100,
-    width: 100,
+    height: 80,
+    width: 80,
   }
 });

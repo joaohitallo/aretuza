@@ -24,7 +24,7 @@ export function ButtonVoltar() {
 const styles = StyleSheet.create({
   container: {
     position: "absolute",
-    top: 20,
+    top: 40,
     left: 20,
   },
 });
