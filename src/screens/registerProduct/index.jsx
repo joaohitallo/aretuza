@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
+import uuid from 'react-native-uuid';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { Input } from '../../components/Input'
 import { ButtonRed } from '../../components/ButtonRed'
 
 export function RegisterProduct() {
+  const [nome, setNome] = useState('')
+  const [valor, setValor] = useState('')
+  const [quantidade, setQuantidade] = useState('')
+  const [validade, setValidade] = useState('')
   const [selectedImage, setSelectedImage] = React.useState(null);
+
+  const [mds, setMds] = useState('')
+
+  var produtc = []
 
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -23,7 +33,64 @@ export function RegisterProduct() {
     }
 
     setSelectedImage({ localUri: pickerResult.uri });
+    console.log(JSON.stringify(selectedImage));
   };
+
+
+  const removeData = async () => {
+    await AsyncStorage.removeItem('product');
+    console.log('ag');
+    try {
+      AsyncStorage.getItem('product', (err, item) => {
+        if (item) {
+          setMds(item);
+        }
+      });
+    } catch (error) {
+      console.log("Error retrieving data" + error);
+    }
+    console.log(mds);
+
+  }
+
+
+  async function handleNewProduct() {
+
+    const id = uuid.v4();
+    const newProduct = {
+      id,
+      nome,
+      valor,
+      quantidade,
+      validade,
+      image: selectedImage.localUri
+
+    }
+
+
+    try {
+      await AsyncStorage.getItem('product', (err, item) => {
+        if (item) {
+          setMds(item);
+          let oldData = JSON.parse(item)
+          console.log(mds);
+          console.log(oldData);
+          const aux = [...oldData, newProduct]
+          console.log(oldData);
+          AsyncStorage.setItem('product', JSON.stringify(aux))
+        }
+        else {
+          const aux = [newProduct]
+          AsyncStorage.setItem('product', JSON.stringify(aux))
+        }
+      });
+    } catch (error) {
+      console.log("Error retrieving data" + error);
+    }
+
+
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.content}>
@@ -39,11 +106,11 @@ export function RegisterProduct() {
           )}
 
         </View>
-        <Input placeholder="Nome" />
-        <Input placeholder="Valor" />
-        <Input placeholder="Quantidade" />
-        <Input placeholder="Data de Validade" />
-        <ButtonRed title='Cadastrar' />
+        <Input placeholder="Nome" onChangeText={setNome} value={nome} />
+        <Input placeholder="Valor" onChangeText={setValor} value={valor} />
+        <Input placeholder="Quantidade" onChangeText={setQuantidade} value={quantidade} />
+        <Input placeholder="Data de Validade" onChangeText={setValidade} value={validade} />
+        <ButtonRed title='Cadastrar' onPress={handleNewProduct} />
       </View>
     </View>
   );
