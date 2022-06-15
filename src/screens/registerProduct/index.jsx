@@ -151,6 +151,15 @@ const styles = StyleSheet.create({
   thumbnail: {
     width: 100,
     height: 100,
-    resizeMode: "contain"
+    resizeMode: "contain",
+
+  },
+  contentImage: {
+    marginBottom: 20
+  },
+  title: {
+    marginBottom: 20,
+    fontSize: 20,
+    fontWeight: "bold"
   }
 });

@@ -31,7 +31,6 @@ export function Home({ navigation }) {
       <View style={styles.content}>
         <ButtonMenu text={'Visualizar \n estoque'} image={EstoqueList} onPress={handleVisualizarEstoque} />
         <ButtonMenu text={'Cadastrar \n produto'} image={CadastrarProd} onPress={handleCadastrarProduto} />
-        <ButtonMenu text={'Efetuar \n venda'} image={EfetuarVend} />
       </View>
     </View>
   );
