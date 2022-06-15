@@ -6,7 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 
 
-export function CardProduct({ item, onPress }) {
+export function CardProduct({ item, onPress, navigation }) {
   const [selectedImage, setSelectedImage] = useState({ localUri: item.image });
   const [FilteredProduct, setFilteredProduct] = useState()
 
@@ -25,7 +25,7 @@ export function CardProduct({ item, onPress }) {
 
 
   function handleEdit() {
-    onPress
+    navigation.navigate('EditProduct', { item: item })
   }
   return (
     <View style={styles.container}>
@@ -53,7 +53,7 @@ export function CardProduct({ item, onPress }) {
       </View>
       <View style={styles.contentButtons} >
         <TouchableOpacity style={styles.button}>
-          <MaterialIcons name="edit" size={24} color="white" onPress={handleEdit()} />
+          <MaterialIcons name="edit" size={24} color="white" onPress={() => handleEdit()} />
         </TouchableOpacity>
         <TouchableOpacity style={styles.button}>
           <MaterialIcons name="delete-forever" size={24} color="white" onPress={() => delectProduct(item.id)} />

@@ -7,6 +7,7 @@ import { SignIn } from '../screens/signIn/index'
 import { Home } from '../screens/home/index'
 import { ListProduct } from '../screens/listProduct/index'
 import { RegisterProduct } from '../screens/registerProduct';
+import { EditProduct } from '../screens/editProduct'
 
 export function Routes() {
   return (
@@ -26,6 +27,10 @@ export function Routes() {
         />
         <Screen
           name="RegisterProduct" component={RegisterProduct}
+          options={{ headerShown: false }}
+        />
+        <Screen
+          name="EditProduct" component={EditProduct}
           options={{ headerShown: false }}
         />
       </Navigator>

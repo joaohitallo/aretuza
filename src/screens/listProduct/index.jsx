@@ -10,14 +10,14 @@ export function ListProduct({ navigation }) {
 
   const [products, setProducts] = useState()
 
-  const [modalVisible, setModalVisible] = useState(false)
+
 
   var product = []
 
 
   useEffect(() => {
     getMyStringValue()
-    setModalVisible(false)
+
   }, [])
 
 
@@ -47,23 +47,11 @@ export function ListProduct({ navigation }) {
     //console.log(products)
   }
 
-  function handleOpenModal(item) {
-    console.log('aki');
-    setModalVisible(true)
-  }
+
 
   return (
     <SafeAreaView style={styles.container}>
-      <Modal
-        animationType='slide'
-        transparent={true}
-        visible={modalVisible}
-        onRequestClose={() => {
-          setModalVisible(!modalVisible)
-        }}>
-        <Text> iaia</Text>
-      </Modal>
-      <ButtonVoltar ></ButtonVoltar>
+      <ButtonVoltar />
       <View style={styles.header}>
         <Text style={styles.title}>Estoque</Text>
         <Input style={styles.input} placeholder='Pesquisar' />
@@ -72,7 +60,7 @@ export function ListProduct({ navigation }) {
       <FlatList
         data={products}
         keyExtractor={item => item.id}
-        renderItem={({ item }) => <CardProduct item={item} onPres={() => handleOpenModal()} style={styles.product} />}
+        renderItem={({ item }) => <CardProduct item={item} style={styles.product} navigation={navigation} />}
       />
     </SafeAreaView>
   );

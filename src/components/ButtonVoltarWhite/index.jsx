@@ -4,7 +4,7 @@ import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 
-export function ButtonVoltar() {
+export function ButtonVoltarWhite(color) {
   const navigation = useNavigation();
 
   function ButtonVoltar() {
@@ -15,7 +15,7 @@ export function ButtonVoltar() {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={ButtonVoltar}>
-        <AntDesign name="arrowleft" size={34} color='black' />
+        <AntDesign name="arrowleft" size={34} color='white' />
       </TouchableOpacity>
     </View>
   );

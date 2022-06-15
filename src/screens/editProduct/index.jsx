@@ -8,14 +8,15 @@ import { Input } from '../../components/Input'
 import { ButtonRed } from '../../components/ButtonRed'
 import { ButtonVoltarWhite } from '../../components/ButtonVoltarWhite'
 
-export function RegisterProduct() {
-  const [nome, setNome] = useState('')
-  const [valor, setValor] = useState('')
-  const [quantidade, setQuantidade] = useState('')
-  const [validade, setValidade] = useState('')
-  const [selectedImage, setSelectedImage] = React.useState(null);
+export function EditProduct({ navigation, route }) {
+  const [nome, setNome] = useState(route.params.item.nome)
+  const [valor, setValor] = useState(route.params.item.valor)
+  const [quantidade, setQuantidade] = useState(route.params.item.quantidade)
+  const [validade, setValidade] = useState(route.params.item.validade)
+  const [selectedImage, setSelectedImage] = React.useState({ localUri: route.params.item.image });
 
   const [mds, setMds] = useState('')
+
 
   var produtc = []
 
@@ -96,7 +97,7 @@ export function RegisterProduct() {
     <View style={styles.container}>
       <ButtonVoltarWhite />
       <View style={styles.content}>
-        <Text style={styles.title}>Cadastro de Produto</Text>
+        <Text style={styles.title}>Editar Produto</Text>
         <View style={styles.contentImage}>
           {!selectedImage ? (<TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
             <Text style={styles.buttonText}>Enviar foto</Text>
@@ -112,7 +113,7 @@ export function RegisterProduct() {
         <Input placeholder="Valor" onChangeText={setValor} value={valor} keyboardType='numeric' />
         <Input placeholder="Quantidade" onChangeText={setQuantidade} keyboardType='numeric' value={quantidade} />
         <Input placeholder="Data de Validade" onChangeText={setValidade} value={validade} />
-        <ButtonRed title='Cadastrar' onPress={handleNewProduct} />
+        <ButtonRed title='Editar' onPress={handleNewProduct} />
       </View>
     </View>
   );
