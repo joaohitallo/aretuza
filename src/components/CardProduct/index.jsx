@@ -6,7 +6,7 @@ import { MaterialIcons } from '@expo/vector-icons';
 
 
 
-export function CardProduct({ item, onPress, navigation }) {
+export function CardProduct({ item, navigation }) {
   const [selectedImage, setSelectedImage] = useState({ localUri: item.image });
   const [FilteredProduct, setFilteredProduct] = useState()
 
@@ -21,6 +21,7 @@ export function CardProduct({ item, onPress, navigation }) {
       }
     });
     await AsyncStorage.setItem('product', JSON.stringify(product))
+
   }
 
 

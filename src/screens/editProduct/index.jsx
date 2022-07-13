@@ -18,7 +18,7 @@ export function EditProduct({ navigation, route }) {
   const [mds, setMds] = useState('')
 
 
-  var produtc = []
+  var product = []
 
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -39,9 +39,12 @@ export function EditProduct({ navigation, route }) {
   };
 
 
-  const removeData = async () => {
+  const removeData = async (id) => {
+
+
+
+
     await AsyncStorage.removeItem('product');
-    console.log('ag');
     try {
       AsyncStorage.getItem('product', (err, item) => {
         if (item) {
@@ -51,12 +54,21 @@ export function EditProduct({ navigation, route }) {
     } catch (error) {
       console.log("Error retrieving data" + error);
     }
-    console.log(mds);
+
 
   }
 
 
-  async function handleNewProduct() {
+  async function handleEditProduct(id1) {
+
+    await AsyncStorage.getItem('product', (err, item) => {
+      if (item) {
+        const aux = (JSON.parse(item))
+        product = aux.filter(item =>
+          item.id !== id1)
+      }
+    });
+    await AsyncStorage.setItem('product', JSON.stringify(product))
 
     const id = uuid.v4();
     const newProduct = {
@@ -113,7 +125,7 @@ export function EditProduct({ navigation, route }) {
         <Input placeholder="Valor" onChangeText={setValor} value={valor} keyboardType='numeric' />
         <Input placeholder="Quantidade" onChangeText={setQuantidade} keyboardType='numeric' value={quantidade} />
         <Input placeholder="Data de Validade" onChangeText={setValidade} value={validade} />
-        <ButtonRed title='Editar' onPress={handleNewProduct} />
+        <ButtonRed title='Editar' onPress={() => handleEditProduct(route.params.item.id)} />
       </View>
     </View>
   );

@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Image } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Image, Alert } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import uuid from 'react-native-uuid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import Toast from 'react-native-toast-message';
+import { useNavigation } from '@react-navigation/native';
 
 import { Input } from '../../components/Input'
 import { ButtonRed } from '../../components/ButtonRed'
@@ -15,6 +17,7 @@ export function RegisterProduct() {
   const [validade, setValidade] = useState('')
   const [selectedImage, setSelectedImage] = React.useState(null);
 
+  const navigation = useNavigation();
   const [mds, setMds] = useState('')
 
   var produtc = []
@@ -84,6 +87,12 @@ export function RegisterProduct() {
           const aux = [newProduct]
           AsyncStorage.setItem('product', JSON.stringify(aux))
         }
+        Toast.show({
+          type: 'success',
+          text1: 'Produto Cadastrado',
+          text2: 'O produto foi cadastrado com sucesso 👋'
+        });
+        navigation.goBack()
       });
     } catch (error) {
       console.log("Error retrieving data" + error);

@@ -2,6 +2,8 @@ import React, { useState, useEffect, useLayoutEffect } from 'react';
 import { View, StyleSheet, Text, SafeAreaView, ScrollView, FlatList, TouchableOpacity, Modal } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import { MaterialIcons } from '@expo/vector-icons';
+
 import { Input } from '../../components/Input'
 import { ButtonVoltar } from '../../components/ButtonVoltar';
 import { CardProduct } from '../../components/CardProduct'
@@ -9,7 +11,7 @@ import { CardProduct } from '../../components/CardProduct'
 export function ListProduct({ navigation }) {
 
   const [products, setProducts] = useState()
-
+  const [load, setLoad] = useState(0)
 
 
   var product = []
@@ -18,7 +20,7 @@ export function ListProduct({ navigation }) {
   useEffect(() => {
     getMyStringValue()
 
-  }, [])
+  }, [load])
 
 
 
