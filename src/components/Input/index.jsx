@@ -15,7 +15,7 @@ export function Input({ label, value, name, ...rest }) {
 
 const stylesInput = StyleSheet.create({
   container: {
-    height: '10%',
+    height: 45,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',

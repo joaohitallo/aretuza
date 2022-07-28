@@ -15,11 +15,11 @@ export function ButtonRed({ title, onPress, ...rest }) {
 
 const styles = StyleSheet.create({
   container: {
-    height: '10%',
+    height: 45,
     width: '100%',
     alignItems: 'center',
     justifyContent: 'center',
-    margin: 15,
+    margin: 8,
   },
   Button: {
 

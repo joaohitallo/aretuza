@@ -34,13 +34,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#0D0E11',
     height: '100%',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
   },
   content: {
     //paddingTop: 80,
     alignItems: 'center',
     justifyContent: 'center',
-    position: 'absolute',
+    alignContent: 'center',
     bottom: 0,
     backgroundColor: '#fff',
     height: '70%',
@@ -49,8 +49,9 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 40,
   },
   logo: {
-    position: 'absolute',
-    top: 100,
+    //position: 'absolute',
+    //top: 100,
+    marginBottom: 60,
     height: 59,
     width: 133
   }
