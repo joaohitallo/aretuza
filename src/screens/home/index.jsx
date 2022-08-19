@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
   },
   logo: {
     position: 'absolute',
-    top: 80,
+    top: 50,
     height: 59,
     width: 133
   }

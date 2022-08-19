@@ -4,6 +4,8 @@ import * as ImagePicker from 'expo-image-picker';
 import uuid from 'react-native-uuid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
+import Toast from 'react-native-toast-message';
+
 import { Input } from '../../components/Input'
 import { ButtonRed } from '../../components/ButtonRed'
 import { ButtonVoltarWhite } from '../../components/ButtonVoltarWhite'
@@ -38,29 +40,8 @@ export function EditProduct({ navigation, route }) {
     console.log(JSON.stringify(selectedImage));
   };
 
-
-  const removeData = async (id) => {
-
-
-
-
-    await AsyncStorage.removeItem('product');
-    try {
-      AsyncStorage.getItem('product', (err, item) => {
-        if (item) {
-          setMds(item);
-        }
-      });
-    } catch (error) {
-      console.log("Error retrieving data" + error);
-    }
-
-
-  }
-
-
+  const aux = 'ListProduct'
   async function handleEditProduct(id1) {
-
     await AsyncStorage.getItem('product', (err, item) => {
       if (item) {
         const aux = (JSON.parse(item))
@@ -68,8 +49,8 @@ export function EditProduct({ navigation, route }) {
           item.id !== id1)
       }
     });
-    await AsyncStorage.setItem('product', JSON.stringify(product))
 
+    await AsyncStorage.setItem('product', JSON.stringify(product))
     const id = uuid.v4();
     const newProduct = {
       id,
@@ -78,9 +59,7 @@ export function EditProduct({ navigation, route }) {
       quantidade,
       validade,
       image: selectedImage.localUri
-
     }
-
 
     try {
       await AsyncStorage.getItem('product', (err, item) => {
@@ -98,11 +77,15 @@ export function EditProduct({ navigation, route }) {
           AsyncStorage.setItem('product', JSON.stringify(aux))
         }
       });
+      Toast.show({
+        type: 'success',
+        text1: 'Produto Editado',
+        text2: 'O produto foi editado com sucesso 👋'
+      });
+      navigation.navigate('ListProduct')
     } catch (error) {
       console.log("Error retrieving data" + error);
     }
-
-
   }
 
   return (
@@ -119,7 +102,6 @@ export function EditProduct({ navigation, route }) {
               style={styles.thumbnail}
             />
           )}
-
         </View>
         <Input placeholder="Nome" onChangeText={setNome} value={nome} />
         <Input placeholder="Valor" onChangeText={setValor} value={valor} keyboardType='numeric' />

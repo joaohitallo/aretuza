@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Text, TouchableOpacity, Image, Alert } from 'react-native';
+import { View, StyleSheet, Text, TouchableOpacity, Image, KeyboardAvoidingView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import uuid from 'react-native-uuid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
@@ -104,7 +104,9 @@ export function RegisterProduct() {
   return (
     <View style={styles.container}>
       <ButtonVoltarWhite />
-      <View style={styles.content}>
+      <KeyboardAvoidingView style={styles.content}
+
+        scrollEnabled={false}>
         <Text style={styles.title}>Cadastro de Produto</Text>
         <View style={styles.contentImage}>
           {!selectedImage ? (<TouchableOpacity onPress={openImagePickerAsync} style={styles.button}>
@@ -115,14 +117,13 @@ export function RegisterProduct() {
               style={styles.thumbnail}
             />
           )}
-
         </View>
         <Input placeholder="Nome" onChangeText={setNome} value={nome} />
         <Input placeholder="Valor" onChangeText={setValor} value={valor} keyboardType='numeric' />
         <Input placeholder="Quantidade" onChangeText={setQuantidade} keyboardType='numeric' value={quantidade} />
         <Input placeholder="Data de Validade" onChangeText={setValidade} value={validade} />
         <ButtonRed title='Cadastrar' onPress={handleNewProduct} />
-      </View>
+      </KeyboardAvoidingView>
     </View>
   );
 }
@@ -132,16 +133,13 @@ const styles = StyleSheet.create({
     backgroundColor: '#0D0E11',
     height: '100%',
     alignItems: 'flex-start',
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
   },
   content: {
     alignItems: 'center',
     justifyContent: 'center',
-    //alignContent: 'flex-start',
-    position: 'absolute',
-    bottom: 0,
     backgroundColor: '#fff',
-    height: '87%',
+    height: 600,
     width: '100%',
     borderTopLeftRadius: 40,
     borderTopRightRadius: 40,

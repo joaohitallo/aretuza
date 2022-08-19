@@ -4,11 +4,11 @@ import { AntDesign } from '@expo/vector-icons';
 import { useNavigation } from '@react-navigation/native';
 
 
-export function ButtonVoltarWhite(color) {
+export function ButtonVoltarWhite() {
   const navigation = useNavigation();
 
   function ButtonVoltar() {
-    navigation.goBack()
+    navigation.goBack();
 
   }
 

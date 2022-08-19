@@ -3,6 +3,7 @@ import { View, StyleSheet, Text, Image, TouchableOpacity } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import { MaterialIcons } from '@expo/vector-icons';
+import Toast from 'react-native-toast-message';
 
 
 
@@ -21,6 +22,11 @@ export function CardProduct({ item, navigation }) {
       }
     });
     await AsyncStorage.setItem('product', JSON.stringify(product))
+    Toast.show({
+      type: 'success',
+      text1: 'Produto Deletado',
+      text2: 'O produto foi deletado com sucesso 👋'
+    });
 
   }
 
