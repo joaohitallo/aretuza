@@ -3,6 +3,8 @@ import { View, StyleSheet, Text, SafeAreaView, ScrollView, FlatList, TouchableOp
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 
+import { useFocusEffect } from '@react-navigation/native';
+
 
 import { Input } from '../../components/Input'
 import { ButtonVoltar } from '../../components/ButtonVoltar';
@@ -20,16 +22,12 @@ export function ListProduct({ navigation }) {
 
 
 
-  useEffect(() => {
+  useFocusEffect(
+    React.useCallback(() => {
+      getMyStringValue()
 
-    getMyStringValue()
-
-
-
-
-
-  }, [])
-
+    }, [products])
+  );
 
 
   async function getMyStringValue() {
@@ -45,16 +43,14 @@ export function ListProduct({ navigation }) {
             product.push(ta)
 
           }
-          let aux2 = [...product]
+          var product = []
           product = product.filter((element, index) => index > 0);
-          //console.log(product);
         }
       });
     } catch (e) {
       console.log(e);
     }
     setProducts(product)
-    //console.log(products)
   }
 
 
