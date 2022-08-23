@@ -66,10 +66,10 @@ export function EditProduct({ navigation, route }) {
         if (item) {
           setMds(item);
           let oldData = JSON.parse(item)
-          console.log(mds);
-          console.log(oldData);
+
+
           const aux = [...oldData, newProduct]
-          console.log(oldData);
+
           AsyncStorage.setItem('product', JSON.stringify(aux))
         }
         else {

@@ -19,9 +19,12 @@ export function ListProduct({ navigation }) {
   var product = []
 
 
+
   useEffect(() => {
 
     getMyStringValue()
+
+
 
 
 
