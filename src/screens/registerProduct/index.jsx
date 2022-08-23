@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, StyleSheet, Text, TouchableOpacity, Image, KeyboardAvoidingView } from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
 import uuid from 'react-native-uuid';
@@ -6,12 +6,44 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-toast-message';
 import { useNavigation } from '@react-navigation/native';
 import { Masks } from 'react-native-mask-input';
+import { useForm, Controller } from 'react-hook-form';
+import * as yup from 'yup'
+import { yupResolver } from '@hookform/resolvers/yup';
+
 
 import { Input } from '../../components/Input'
 import { ButtonRed } from '../../components/ButtonRed'
 import { ButtonVoltarWhite } from '../../components/ButtonVoltarWhite'
 
+const schema = yup.object().shape({
+  nome: yup
+    .string()
+    .required('O nome não pode ser vazio'),
+  valor: yup
+    .number()
+    .required('O valor não pode ser vazio'),
+  quantidade: yup
+    .number()
+    .required('A quantidade não pode ser vazia'),
+  validade: yup
+    .number()
+    .required('A validade não pode ser vazia')
+    .min(8, 'A data deve conter 8 dígitos'),
+
+})
+
 export function RegisterProduct() {
+
+  const { control, handleSubmit, formState: { errors } } = useForm({
+    resolver: yupResolver(schema)
+  });
+  const onSubmit = data => console.log(errors)
+
+
+
+
+
+
   const [nome, setNome] = useState('')
   const [valor, setValor] = useState('')
   const [quantidade, setQuantidade] = useState('')
@@ -119,32 +151,84 @@ export function RegisterProduct() {
             />
           )}
         </View>
-        <Input
-          placeholder="Nome"
-          onChangeText={setNome}
-          value={nome}
+        <Controller
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              placeholder="Nome do Produto"
+              mask={Masks.BRL_CURRENCY}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              error={errors?.nome}
+            />)}
+          name="nome"
         />
+        <Controller
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              placeholder="Preço"
+              keyboardType='numeric'
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              error={errors?.valor}
+            />)}
+          name="valor"
+        />
+        <Controller
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              placeholder="Quantidade"
+              keyboardType='numeric'
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+              error={errors?.quantidade}
+            />)}
+          name="quantidade"
+        />
+        <Controller
+          control={control}
+          render={({ field: { onChange, onBlur, value } }) => (
+            <Input
+              placeholder="Data de validade"
+              onBlur={onBlur}
+              keyboardType='numeric'
+              onChangeText={onChange}
+              value={value}
+              error={errors?.validade}
+            />)}
+          name="validade"
+        />
+        {/* 
         <Input
+          label={'valor'}
           placeholder="Valor"
-          onChangeText={setValor}
-          value={valor}
           keyboardType='numeric'
-          mask={Masks.BRL_CURRENCY}
+          //mask={Masks.BRL_CURRENCY}
+          onChangeText={text => setValue('valor', text)}
+          error={errors?.valor}
         />
         <Input
+          label={'quantidade'}
           placeholder="Quantidade"
-          onChangeText={setQuantidade}
           keyboardType='numeric'
-          value={quantidade}
+          onChangeText={text => setValue('quantidade', text)}
+          error={errors?.quantidade}
         />
         <Input
+          label={'validade'}
           placeholder="Data de Validade"
-          onChangeText={setValidade}
           keyboardType='numeric'
-          value={validade}
-          mask={Masks.DATE_DDMMYYYY}
+          //mask={Masks.DATE_DDMMYYYY}
+          onChangeText={text => setValue('validade', text)}
+          error={errors?.validade}
         />
-        <ButtonRed title='Cadastrar' onPress={handleNewProduct} />
+        */}
+        <ButtonRed title='Cadastrar' onPress={handleSubmit(onSubmit)} />
       </KeyboardAvoidingView>
     </View>
   );

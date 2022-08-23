@@ -1,10 +1,10 @@
 import React from 'react';
-import { View, TextInput, StyleSheet } from 'react-native';
+import { View, TextInput, StyleSheet, Text } from 'react-native';
 import MaskInput, { Masks } from 'react-native-mask-input';
 
 
 
-export function Input({ label, value, name, mask, ...rest }) {
+export function Input({ label, value, name, mask, error, ...rest }) {
   return (
     <View style={stylesInput.container}>
       {mask ?
@@ -18,7 +18,7 @@ export function Input({ label, value, name, mask, ...rest }) {
           {...rest}
         />
       }
-
+      {!!error && <Text style={stylesInput.textErro}>{error.message}</Text>}
     </View>
   );
 }
@@ -38,5 +38,8 @@ const stylesInput = StyleSheet.create({
     borderRadius: 100,
     padding: 10,
     paddingLeft: 20,
+  },
+  textErro: {
+    color: 'red',
   }
 });
