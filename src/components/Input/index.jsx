@@ -1,14 +1,24 @@
 import React from 'react';
 import { View, TextInput, StyleSheet } from 'react-native';
+import MaskInput, { Masks } from 'react-native-mask-input';
 
 
-export function Input({ label, value, name, ...rest }) {
+
+export function Input({ label, value, name, mask, ...rest }) {
   return (
     <View style={stylesInput.container}>
-      <TextInput style={stylesInput.input}
-        value={value}
-        {...rest}
-      />
+      {mask ?
+        <MaskInput style={stylesInput.input}
+          value={value}
+          mask={mask}
+          {...rest} />
+        :
+        <TextInput style={stylesInput.input}
+          value={value}
+          {...rest}
+        />
+      }
+
     </View>
   );
 }

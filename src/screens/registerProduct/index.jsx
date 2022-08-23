@@ -5,6 +5,7 @@ import uuid from 'react-native-uuid';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import Toast from 'react-native-toast-message';
 import { useNavigation } from '@react-navigation/native';
+import { Masks } from 'react-native-mask-input';
 
 import { Input } from '../../components/Input'
 import { ButtonRed } from '../../components/ButtonRed'
@@ -118,10 +119,31 @@ export function RegisterProduct() {
             />
           )}
         </View>
-        <Input placeholder="Nome" onChangeText={setNome} value={nome} />
-        <Input placeholder="Valor" onChangeText={setValor} value={valor} keyboardType='numeric' />
-        <Input placeholder="Quantidade" onChangeText={setQuantidade} keyboardType='numeric' value={quantidade} />
-        <Input placeholder="Data de Validade" onChangeText={setValidade} value={validade} />
+        <Input
+          placeholder="Nome"
+          onChangeText={setNome}
+          value={nome}
+        />
+        <Input
+          placeholder="Valor"
+          onChangeText={setValor}
+          value={valor}
+          keyboardType='numeric'
+          mask={Masks.BRL_CURRENCY}
+        />
+        <Input
+          placeholder="Quantidade"
+          onChangeText={setQuantidade}
+          keyboardType='numeric'
+          value={quantidade}
+        />
+        <Input
+          placeholder="Data de Validade"
+          onChangeText={setValidade}
+          keyboardType='numeric'
+          value={validade}
+          mask={Masks.DATE_DDMMYYYY}
+        />
         <ButtonRed title='Cadastrar' onPress={handleNewProduct} />
       </KeyboardAvoidingView>
     </View>

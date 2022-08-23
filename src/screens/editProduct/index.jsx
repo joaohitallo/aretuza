@@ -103,10 +103,31 @@ export function EditProduct({ navigation, route }) {
             />
           )}
         </View>
-        <Input placeholder="Nome" onChangeText={setNome} value={nome} />
-        <Input placeholder="Valor" onChangeText={setValor} value={valor} keyboardType='numeric' />
-        <Input placeholder="Quantidade" onChangeText={setQuantidade} keyboardType='numeric' value={quantidade} />
-        <Input placeholder="Data de Validade" onChangeText={setValidade} value={validade} />
+        <Input
+          placeholder="Nome"
+          onChangeText={setNome}
+          value={nome}
+        />
+        <Input
+          placeholder="Valor"
+          onChangeText={setValor}
+          value={valor}
+          keyboardType='numeric'
+          mask={Masks.BRL_CURRENCY}
+        />
+        <Input
+          placeholder="Quantidade"
+          onChangeText={setQuantidade}
+          keyboardType='numeric'
+          value={quantidade}
+        />
+        <Input
+          placeholder="Data de Validade"
+          onChangeText={setValidade}
+          keyboardType='numeric'
+          value={validade}
+          mask={Masks.DATE_DDMMYYYY}
+        />
         <ButtonRed title='Editar' onPress={() => handleEditProduct(route.params.item.id)} />
       </View>
     </View>
