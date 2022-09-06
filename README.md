@@ -5,7 +5,7 @@
   <p>
     <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/joaohitallo/aretuza?color=%232196F3">
     <a href="https://www.linkedin.com/in/joaohitallo/" target="_blank" rel="noopener noreferrer">
-    <img alt="Made by" src="https://img.shields.io/badge/made%20by-Henrique%20Martins-%232196F3">
+    <img alt="Made by" src="https://img.shields.io/badge/made%20by-Joao%20Hitallo-%232196F3">
     </a>          
     <img alt="GitHub" src="https://img.shields.io/github/license/joaohitallo/aretuza?color=%232196F3">
   </p>
