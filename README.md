@@ -5,15 +5,15 @@
   <p>
     <img alt="GitHub top language" src="https://img.shields.io/github/languages/top/joaohitallo/aretuza?color=%232196F3">
     <a href="https://www.linkedin.com/in/joaohitallo/" target="_blank" rel="noopener noreferrer">
-
+    <img alt="Made by" src="https://img.shields.io/badge/made%20by-Henrique%20Martins-%232196F3">
     </a>          
-    <img alt="GitHub" src="https://img.shields.io/github/license/hmartiins/plantmanager?color=%232196F3">
+    <img alt="GitHub" src="https://img.shields.io/github/license/joaohitallo/aretuza?color=%232196F3">
   </p>
 </div>
 
 # 👀 About
 
-Several places use plants, be it their home or business, and nowadays the human being is more and more busy, so he ends up forgetting to water his plants. Plantmanager came to solve this problem, with this application you will know when and how to water your plants !!
+
 
 <div align="center">
   <img src="assets/cover.png" width="700" /> 
@@ -28,10 +28,7 @@ Several places use plants, be it their home or business, and nowadays the human 
   - [Node.js](https://nodejs.org/en/)
   - [Expo](https://expo.io/)  
   - [React Native](https://reactnative.dev/)
-  - [TypeScript](https://www.typescriptlang.org/)
-  - [ESlint](https://eslint.org/)
-  - [Prettier](https://prettier.io/)
-  - [EditorConfig](https://editorconfig.org/)
+
 
 
 ## 💻 Getting started
@@ -57,14 +54,12 @@ $ cd plantmanager
 # Install the dependencies
 $ yarn install
 
-# Make a copy of '.env.example' to '.env'
-# and set with YOUR environment variables.
-$ cp .env.example .env
+
 
 # Finally, run the api service in a development environment :)
 $ yarn start
 
-# Well done, PlantManager is started!
+# Well done, Aretuza is started!
 ```
 <br>
 
@@ -74,6 +69,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 <hr>
 <div align="center">
-  <sub>Copyright © 2021-present, hmartiins.</sub>
+  <sub>Copyright © 2021-present, joaohitallo.</sub>
 </div>
 <hr>
