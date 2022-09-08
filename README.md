@@ -13,7 +13,7 @@
 
 # 👀 About
 
-
+<p>stock management app for markets<p>
 
 <div align="center">
   <img src="assets/cover.png" width="700" /> 
@@ -44,8 +44,8 @@
 *Clone the project and access the folder*
 
 ```bash
-$ git clone https://github.com/hmartiins/plantmanager 
-$ cd plantmanager
+$ git clone https://github.com/joaohitallo/aretuza
+$ cd aretuza
 ```
 
 *Follow the steps below*
