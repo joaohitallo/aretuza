@@ -11,6 +11,7 @@ import * as yup from 'yup'
 import { yupResolver } from '@hookform/resolvers/yup';
 
 
+
 import { Input } from '../../components/Input'
 import { ButtonRed } from '../../components/ButtonRed'
 import { ButtonVoltarWhite } from '../../components/ButtonVoltarWhite'
@@ -20,13 +21,13 @@ const schema = yup.object().shape({
     .string()
     .required('O nome não pode ser vazio'),
   valor: yup
-    .number()
+    .string()
     .required('O valor não pode ser vazio'),
   quantidade: yup
     .number()
     .required('A quantidade não pode ser vazia'),
   validade: yup
-    .number()
+    .string()
     .required('A validade não pode ser vazia')
     .min(8, 'A data deve conter 8 dígitos'),
 
@@ -156,7 +157,6 @@ export function RegisterProduct() {
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
               placeholder="Nome do Produto"
-              mask={Masks.BRL_CURRENCY}
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
@@ -170,6 +170,7 @@ export function RegisterProduct() {
             <Input
               placeholder="Preço"
               keyboardType='numeric'
+              mask={Masks.BRL_CURRENCY}
               onBlur={onBlur}
               onChangeText={onChange}
               value={value}
@@ -195,6 +196,7 @@ export function RegisterProduct() {
           render={({ field: { onChange, onBlur, value } }) => (
             <Input
               placeholder="Data de validade"
+              mask={Masks.DATE_DDMMYYYY}
               onBlur={onBlur}
               keyboardType='numeric'
               onChangeText={onChange}
@@ -203,31 +205,6 @@ export function RegisterProduct() {
             />)}
           name="validade"
         />
-        {/* 
-        <Input
-          label={'valor'}
-          placeholder="Valor"
-          keyboardType='numeric'
-          //mask={Masks.BRL_CURRENCY}
-          onChangeText={text => setValue('valor', text)}
-          error={errors?.valor}
-        />
-        <Input
-          label={'quantidade'}
-          placeholder="Quantidade"
-          keyboardType='numeric'
-          onChangeText={text => setValue('quantidade', text)}
-          error={errors?.quantidade}
-        />
-        <Input
-          label={'validade'}
-          placeholder="Data de Validade"
-          keyboardType='numeric'
-          //mask={Masks.DATE_DDMMYYYY}
-          onChangeText={text => setValue('validade', text)}
-          error={errors?.validade}
-        />
-        */}
         <ButtonRed title='Cadastrar' onPress={handleSubmit(onSubmit)} />
       </KeyboardAvoidingView>
     </View>
