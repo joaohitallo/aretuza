@@ -51,7 +51,7 @@ export function CardProduct({ item, navigation }) {
         </View>
         <View style={styles.linha} >
           <Text style={styles.Text} >Valor:  </Text>
-          <Text style={styles.Text} >R$ {item.valor} </Text>
+          <Text style={styles.Text} > {item.valor} </Text>
         </View>
         <View style={styles.linha} >
           <Text style={styles.Text} >Validade:  </Text>

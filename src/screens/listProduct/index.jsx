@@ -31,6 +31,7 @@ export function ListProduct({ navigation }) {
 
 
   async function getMyStringValue() {
+    var product = []
     try {
       await AsyncStorage.getItem('product', (err, item) => {
         if (item) {
@@ -43,7 +44,7 @@ export function ListProduct({ navigation }) {
             product.push(ta)
 
           }
-          var product = []
+
           product = product.filter((element, index) => index > 0);
         }
       });

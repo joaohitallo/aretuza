@@ -38,23 +38,12 @@ export function RegisterProduct() {
   const { control, handleSubmit, formState: { errors } } = useForm({
     resolver: yupResolver(schema)
   });
-  const onSubmit = data => console.log(errors)
 
-
-
-
-
-
-  const [nome, setNome] = useState('')
-  const [valor, setValor] = useState('')
-  const [quantidade, setQuantidade] = useState('')
-  const [validade, setValidade] = useState('')
   const [selectedImage, setSelectedImage] = React.useState(null);
 
   const navigation = useNavigation();
-  const [mds, setMds] = useState('')
 
-  var produtc = []
+
 
   let openImagePickerAsync = async () => {
     let permissionResult = await ImagePicker.requestMediaLibraryPermissionsAsync();
@@ -75,46 +64,23 @@ export function RegisterProduct() {
   };
 
 
-  const removeData = async () => {
-    await AsyncStorage.removeItem('product');
-    console.log('ag');
-    try {
-      AsyncStorage.getItem('product', (err, item) => {
-        if (item) {
-          setMds(item);
-        }
-      });
-    } catch (error) {
-      console.log("Error retrieving data" + error);
-    }
-    console.log(mds);
 
-  }
+  async function onSubmit(data) {
 
-
-  async function handleNewProduct() {
-
-    const id = uuid.v4();
     const newProduct = {
-      id,
-      nome,
-      valor,
-      quantidade,
-      validade,
+      id: uuid.v4(),
+      nome: data.nome,
+      valor: data.valor,
+      quantidade: data.quantidade,
+      validade: data.validade,
       image: selectedImage.localUri
-
     }
-
 
     try {
       await AsyncStorage.getItem('product', (err, item) => {
         if (item) {
-          setMds(item);
           let oldData = JSON.parse(item)
-          console.log(mds);
-          console.log(oldData);
           const aux = [...oldData, newProduct]
-          console.log(oldData);
           AsyncStorage.setItem('product', JSON.stringify(aux))
         }
         else {
@@ -130,9 +96,12 @@ export function RegisterProduct() {
       });
     } catch (error) {
       console.log("Error retrieving data" + error);
+      Toast.show({
+        type: 'error',
+        text1: 'Erro ao cadastrar produto',
+        text2: `${error}`
+      });
     }
-
-
   }
 
   return (
